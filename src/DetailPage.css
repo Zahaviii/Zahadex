@@ -1272,3 +1272,305 @@
   0%, 100% { transform: rotate(90deg) translateY(0); }
   50% { transform: rotate(90deg) translateY(4px); }
 }
+
+/* ── Detail Page Dark Mode Overrides ── */
+body.dark .detail-back-btn {
+  background: rgba(15, 23, 42, 0.65) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #38bdf8 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark .detail-back-btn:hover {
+  background: rgba(30, 41, 59, 0.8) !important;
+  border-color: #38bdf8 !important;
+  color: #7dd3fc !important;
+}
+
+body.dark .detail-card-container {
+  background: rgba(15, 23, 42, 0.65) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #e2e8f0 !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark .detail-hero-name {
+  color: #ffffff !important;
+}
+
+body.dark .detail-info-box {
+  background: rgba(30, 41, 59, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.02) !important;
+}
+
+body.dark .detail-info-box:hover {
+  border-color: rgba(56, 189, 248, 0.3) !important;
+}
+
+body.dark .detail-info-value {
+  color: #ffffff !important;
+}
+
+body.dark .glass-panel {
+  background: rgba(30, 41, 59, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+body.dark .detail-section-title {
+  color: #38bdf8 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+body.dark .detail-stat-val {
+  color: #f8fafc !important;
+}
+
+body.dark .detail-stat-bar-bg {
+  background: #1e293b !important;
+}
+
+body.dark .ability-pill {
+  background: rgba(15, 23, 42, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  color: #cbd5e1 !important;
+}
+
+body.dark .ability-pill:hover {
+  background: rgba(15, 23, 42, 0.8) !important;
+  border-color: #38bdf8 !important;
+}
+
+body.dark .ability-name {
+  color: #ffffff !important;
+}
+
+body.dark .ability-desc {
+  color: #94a3b8 !important;
+}
+
+body.dark .cry-play-btn {
+  background: #1e293b !important;
+  color: #38bdf8 !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+body.dark .cry-play-btn:hover {
+  background: #38bdf8 !important;
+  color: #0f172a !important;
+}
+
+body.dark .evolution-node {
+  background: rgba(15, 23, 42, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+body.dark .evolution-node.active-node {
+  background: rgba(56, 189, 248, 0.1) !important;
+  border-color: #38bdf8 !important;
+}
+
+body.dark .evolution-node:hover {
+  background: rgba(30, 41, 59, 0.6) !important;
+  border-color: #38bdf8 !important;
+}
+
+body.dark .evolution-node-name {
+  color: #f1f5f9 !important;
+}
+
+body.dark .evolution-arrow-trigger {
+  background: #1e293b !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  color: #94a3b8 !important;
+}
+
+body.dark .evolution-arrow-icon {
+  color: #38bdf8 !important;
+}
+
+body.dark .companion-card {
+  background: rgba(15, 23, 42, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+body.dark .companion-card:hover {
+  border-color: rgba(56, 189, 248, 0.3) !important;
+  background: rgba(30, 41, 59, 0.5) !important;
+}
+
+body.dark .companion-name {
+  color: #f8fafc !important;
+}
+
+/* ── Additional Detail Page Dark Mode Overrides for Perfect Legibility ── */
+body.dark .description-text {
+  color: #e2e8f0 !important;
+}
+
+body.dark .genus-tag {
+  color: #e0f2fe !important;
+  background: rgba(56, 189, 248, 0.15) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+}
+
+body.dark .fact-version-label {
+  color: #60a5fa !important;
+}
+
+body.dark .fact-speech-bubble {
+  background: #0f172a !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #cbd5e1 !important;
+}
+
+body.dark .fact-item {
+  background: rgba(15, 23, 42, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+body.dark .fact-label {
+  color: #94a3b8 !important;
+}
+
+body.dark .fact-value {
+  color: #f8fafc !important;
+}
+
+body.dark .capture-percentage {
+  color: #cbd5e1 !important;
+}
+
+body.dark .evolution-node-card {
+  background: rgba(15, 23, 42, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #cbd5e1 !important;
+}
+
+body.dark .evolution-node-card.current-evo-node {
+  background: rgba(56, 189, 248, 0.1) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.25) !important;
+}
+
+body.dark .evolution-node-card:not(.current-evo-node):hover {
+  background: rgba(30, 41, 59, 0.65) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark .evo-image-wrapper {
+  background: rgba(9, 13, 22, 0.6) !important;
+}
+
+body.dark .evo-node-id {
+  color: #38bdf8 !important;
+}
+
+body.dark .evo-node-name {
+  color: #ffffff !important;
+}
+
+body.dark .evo-node-trigger-desc {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+body.dark .evolution-trigger-badge {
+  background: rgba(56, 189, 248, 0.12) !important;
+  color: #38bdf8 !important;
+  border-color: rgba(56, 189, 248, 0.25) !important;
+}
+
+body.dark .relations-caption,
+body.dark .counters-caption,
+body.dark .cry-details-caption {
+  color: #94a3b8 !important;
+}
+
+body.dark .counter-group-box {
+  background: rgba(15, 23, 42, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark .counter-group-title {
+  color: #cbd5e1 !important;
+}
+
+body.dark .detail-stat-name {
+  color: #cbd5e1 !important;
+}
+
+body.dark .detail-info-label {
+  color: #94a3b8 !important;
+}
+
+body.dark .species-status-badges span.legendary-badge {
+  background: rgba(245, 158, 11, 0.1) !important;
+  color: #f59e0b !important;
+  border-color: rgba(245, 158, 11, 0.25) !important;
+}
+
+body.dark .species-status-badges span.mythical-badge {
+  background: rgba(168, 85, 247, 0.1) !important;
+  color: #c084fc !important;
+  border-color: rgba(168, 85, 247, 0.25) !important;
+}
+
+body.dark .species-status-badges span.baby-badge {
+  background: rgba(34, 197, 94, 0.1) !important;
+  color: #4ade80 !important;
+  border-color: rgba(34, 197, 94, 0.25) !important;
+}
+
+/* Detail Page Ability Card legibility in dark mode */
+body.dark .detail-ability-card {
+  background: rgba(15, 23, 42, 0.65) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark .detail-ability-card:hover {
+  background: rgba(30, 41, 59, 0.7) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15) !important;
+}
+
+body.dark .detail-ability-card.hidden-ability {
+  border-color: rgba(234, 179, 8, 0.25) !important;
+}
+
+body.dark .detail-ability-card.hidden-ability:hover {
+  background: rgba(234, 179, 8, 0.08) !important;
+  border-color: #f59e0b !important;
+}
+
+/* Detail Page Similar Pokémon (Relations) Cards legibility in dark mode */
+body.dark .relation-node-card {
+  background: rgba(15, 23, 42, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark .relation-node-card:hover {
+  background: rgba(30, 41, 59, 0.75) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark .relation-img-wrapper {
+  background: rgba(9, 13, 22, 0.6) !important;
+}
+
+body.dark .relation-node-name {
+  color: #ffffff !important;
+}
+
+body.dark .relation-node-id {
+  color: #38bdf8 !important;
+}
+
+body.dark .relation-badge-type-label {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+
+

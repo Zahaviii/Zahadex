@@ -25,13 +25,135 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  /* Theme color variable system */
+  --bg-color: #f8fafc;
+  --text-color: #1e293b;
+  --card-bg: rgba(255, 255, 255, 0.45);
+  --card-bg-hover: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(191, 219, 254, 0.7);
+  --card-text: #1e40af;
+  --title-color: #3b82f6;
+  --panel-bg: #ffffff;
+  --panel-border: rgba(226, 232, 240, 0.8);
+  --input-bg: rgba(255, 255, 255, 0.45);
+  --input-bg-hover: rgba(255, 255, 255, 0.6);
+  --input-bg-focus: #ffffff;
+  --search-border: rgba(191, 219, 254, 0.65);
+  --search-text: #1e293b;
+  --badge-bg: #eff6ff;
+  --badge-text: #1d4ed8;
+  --badge-border: rgba(59, 130, 246, 0.15);
+  --nav-text-active: #1e3a8a;
+  --nav-bg-active: #ffffff;
+  --nav-glow-active: rgba(255, 255, 255, 0.4);
+  --navbar-bg: linear-gradient(135deg, #1d4ed8, #3b82f6, #60a5fa);
+  --detail-hero-id-bg: #1d4ed8;
+  --detail-hero-id-text: #bfdbfe;
+  --detail-hero-name: #1e3a8a;
+  --detail-section-title: #1e3a8a;
+  --detail-info-box-bg: #ffffff;
+  --detail-info-box-border: rgba(226, 232, 240, 0.8);
+  --detail-info-box-text: #1e293b;
+  --detail-ability-bg: #f8fafc;
+  --detail-ability-border: rgba(226, 232, 240, 0.6);
+  --detail-ability-text: #1e293b;
+  --detail-stat-val: #1e293b;
+  --detail-stat-bar-bg: #f1f5f9;
+  --fact-speech-bubble-bg: #f8fafc;
+  --fact-speech-bubble-border: rgba(226, 232, 240, 0.6);
+  --fact-speech-bubble-text: #475569;
+  --fact-item-bg: rgba(248, 250, 252, 0.45);
+  --fact-item-border: rgba(226, 232, 240, 0.5);
+  --fact-item-value: #1e293b;
+  --evo-node-border: rgba(226, 232, 240, 0.8);
+  --evo-node-bg: rgba(255, 255, 255, 0.4);
+  --evo-node-name: #1e293b;
+  --modal-content-bg: #ffffff;
+  --modal-text: #1e293b;
+  --modal-stats-h3: #1e3a8a;
+  --gacha-panel-bg: rgba(255, 255, 255, 0.45);
+  --gacha-panel-border: rgba(191, 219, 254, 0.65);
+  --gacha-title: #1e3a8a;
+  --gacha-text: #475569;
+  --gacha-results-bg: #0f172a;
+  --body-pattern: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='rgba(59, 130, 246, 0.03)' stroke-width='2'/%3E%3Cline x1='5' y1='50' x2='95' y2='50' stroke='rgba(59, 130, 246, 0.03)' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%23ffffff' stroke='rgba(59, 130, 246, 0.03)' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='6' fill='none' stroke='rgba(59, 130, 246, 0.03)' stroke-width='2'/%3E%3C/svg%3E");
+
   @media (max-width: 1024px) {
     font-size: 16px;
   }
 }
 
+/* Explicit selector override for dark mode */
+:root[data-theme="dark"] {
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --border: #2e303a;
+  --code-bg: #1f2028;
+  --accent: #c084fc;
+  --accent-bg: rgba(192, 132, 252, 0.15);
+  --accent-border: rgba(192, 132, 252, 0.5);
+  --social-bg: rgba(47, 48, 58, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+  /* Theme variables - dark mode */
+  --bg-color: #0f172a;
+  --text-color: #cbd5e1;
+  --card-bg: rgba(30, 41, 59, 0.45);
+  --card-bg-hover: rgba(30, 41, 59, 0.7);
+  --card-border: rgba(59, 130, 246, 0.25);
+  --card-text: #60a5fa;
+  --title-color: #60a5fa;
+  --panel-bg: #1e293b;
+  --panel-border: rgba(51, 65, 85, 0.8);
+  --input-bg: rgba(30, 41, 59, 0.45);
+  --input-bg-hover: rgba(30, 41, 59, 0.6);
+  --input-bg-focus: #1e293b;
+  --search-border: rgba(59, 130, 246, 0.35);
+  --search-text: #cbd5e1;
+  --badge-bg: rgba(59, 130, 246, 0.15);
+  --badge-text: #60a5fa;
+  --badge-border: rgba(59, 130, 246, 0.35);
+  --nav-text-active: #ffffff;
+  --nav-bg-active: #2563eb;
+  --nav-glow-active: rgba(37, 99, 235, 0.4);
+  --navbar-bg: linear-gradient(135deg, #0f172a, #1e293b, #1d4ed8);
+  --detail-hero-id-bg: #2563eb;
+  --detail-hero-id-text: #ffffff;
+  --detail-hero-name: #60a5fa;
+  --detail-section-title: #60a5fa;
+  --detail-info-box-bg: #1e293b;
+  --detail-info-box-border: rgba(51, 65, 85, 0.8);
+  --detail-info-box-text: #cbd5e1;
+  --detail-ability-bg: #1e293b;
+  --detail-ability-border: rgba(51, 65, 85, 0.6);
+  --detail-ability-text: #cbd5e1;
+  --detail-stat-val: #cbd5e1;
+  --detail-stat-bar-bg: #334155;
+  --fact-speech-bubble-bg: #1e293b;
+  --fact-speech-bubble-border: rgba(51, 65, 85, 0.6);
+  --fact-speech-bubble-text: #94a3b8;
+  --fact-item-bg: rgba(30, 41, 59, 0.45);
+  --fact-item-border: rgba(51, 65, 85, 0.5);
+  --fact-item-value: #cbd5e1;
+  --evo-node-border: rgba(51, 65, 85, 0.8);
+  --evo-node-bg: rgba(30, 41, 59, 0.4);
+  --evo-node-name: #cbd5e1;
+  --modal-content-bg: #1e293b;
+  --modal-text: #cbd5e1;
+  --modal-stats-h3: #60a5fa;
+  --gacha-panel-bg: rgba(30, 41, 59, 0.45);
+  --gacha-panel-border: rgba(59, 130, 246, 0.35);
+  --gacha-title: #60a5fa;
+  --gacha-text: #cbd5e1;
+  --gacha-results-bg: #0b0f19;
+  --body-pattern: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='rgba(59, 130, 246, 0.06)' stroke-width='2'/%3E%3Cline x1='5' y1='50' x2='95' y2='50' stroke='rgba(59, 130, 246, 0.06)' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%230f172a' stroke='rgba(59, 130, 246, 0.06)' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='6' fill='none' stroke='rgba(59, 130, 246, 0.06)' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+/* Fallback override for default system setting when manual override is not active */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --text: #9ca3af;
     --text-h: #f3f4f6;
     --bg: #16171d;
@@ -43,9 +165,62 @@
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+    /* Theme variables - dark mode */
+    --bg-color: #0f172a;
+    --text-color: #cbd5e1;
+    --card-bg: rgba(30, 41, 59, 0.45);
+    --card-bg-hover: rgba(30, 41, 59, 0.7);
+    --card-border: rgba(59, 130, 246, 0.25);
+    --card-text: #60a5fa;
+    --title-color: #60a5fa;
+    --panel-bg: #1e293b;
+    --panel-border: rgba(51, 65, 85, 0.8);
+    --input-bg: rgba(30, 41, 59, 0.45);
+    --input-bg-hover: rgba(30, 41, 59, 0.6);
+    --input-bg-focus: #1e293b;
+    --search-border: rgba(59, 130, 246, 0.35);
+    --search-text: #cbd5e1;
+    --badge-bg: rgba(59, 130, 246, 0.15);
+    --badge-text: #60a5fa;
+    --badge-border: rgba(59, 130, 246, 0.35);
+    --nav-text-active: #ffffff;
+    --nav-bg-active: #2563eb;
+    --nav-glow-active: rgba(37, 99, 235, 0.4);
+    --navbar-bg: linear-gradient(135deg, #0f172a, #1e293b, #1d4ed8);
+    --detail-hero-id-bg: #2563eb;
+    --detail-hero-id-text: #ffffff;
+    --detail-hero-name: #60a5fa;
+    --detail-section-title: #60a5fa;
+    --detail-info-box-bg: #1e293b;
+    --detail-info-box-border: rgba(51, 65, 85, 0.8);
+    --detail-info-box-text: #cbd5e1;
+    --detail-ability-bg: #1e293b;
+    --detail-ability-border: rgba(51, 65, 85, 0.6);
+    --detail-ability-text: #cbd5e1;
+    --detail-stat-val: #cbd5e1;
+    --detail-stat-bar-bg: #334155;
+    --fact-speech-bubble-bg: #1e293b;
+    --fact-speech-bubble-border: rgba(51, 65, 85, 0.6);
+    --fact-speech-bubble-text: #94a3b8;
+    --fact-item-bg: rgba(30, 41, 59, 0.45);
+    --fact-item-border: rgba(51, 65, 85, 0.5);
+    --fact-item-value: #cbd5e1;
+    --evo-node-border: rgba(51, 65, 85, 0.8);
+    --evo-node-bg: rgba(30, 41, 59, 0.4);
+    --evo-node-name: #cbd5e1;
+    --modal-content-bg: #1e293b;
+    --modal-text: #cbd5e1;
+    --modal-stats-h3: #60a5fa;
+    --gacha-panel-bg: rgba(30, 41, 59, 0.45);
+    --gacha-panel-border: rgba(59, 130, 246, 0.35);
+    --gacha-title: #60a5fa;
+    --gacha-text: #cbd5e1;
+    --gacha-results-bg: #0b0f19;
+    --body-pattern: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='rgba(59, 130, 246, 0.06)' stroke-width='2'/%3E%3Cline x1='5' y1='50' x2='95' y2='50' stroke='rgba(59, 130, 246, 0.06)' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%230f172a' stroke='rgba(59, 130, 246, 0.06)' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='6' fill='none' stroke='rgba(59, 130, 246, 0.06)' stroke-width='2'/%3E%3C/svg%3E");
   }
 
-  #social .button-icon {
+  #social .button-icon, :root:not([data-theme="light"]) #social .button-icon {
     filter: invert(1) brightness(2);
   }
 }

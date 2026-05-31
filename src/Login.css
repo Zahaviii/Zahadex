@@ -1,0 +1,475 @@
+/* ── Login Overlay Screen & Cards ── */
+.login-screen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(circle at 10% 15%, rgba(59, 130, 246, 0.08) 0%, rgba(96, 165, 250, 0.03) 40%, transparent 75%),
+    radial-gradient(circle at 85% 45%, rgba(147, 197, 253, 0.1) 0%, rgba(191, 219, 254, 0.04) 35%, transparent 65%),
+    url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='rgba(59, 130, 246, 0.02)' stroke-width='2'/%3E%3Cline x1='5' y1='50' x2='95' y2='50' stroke='rgba(59, 130, 246, 0.02)' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%23ffffff' stroke='rgba(59, 130, 246, 0.02)' stroke-width='2'/%3E%3C/svg%3E");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 20px;
+  overflow-y: auto;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  animation: loginFadeIn 0.4s ease-out;
+}
+
+@keyframes loginFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.login-container-card {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(191, 219, 254, 0.8);
+  border-radius: 28px;
+  padding: 40px 32px;
+  box-shadow: 
+    0 25px 50px -12px rgba(59, 130, 246, 0.25),
+    0 10px 20px rgba(0, 0, 0, 0.03),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  animation: loginSlideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes loginSlideUp {
+  from { transform: translateY(40px) scale(0.95); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Rotating 3D Pokeball Header icon */
+.login-pokeball-header {
+  margin-bottom: 24px;
+}
+
+.login-pokeball-rotator {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 4px solid #1e293b;
+  position: relative;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 10px 20px rgba(239, 68, 68, 0.18);
+  animation: pokeballSpinWave 3.5s cubic-bezier(0.68, -0.6, 0.32, 1.6) infinite;
+}
+
+@keyframes pokeballSpinWave {
+  0% { transform: scale(1) rotate(0deg); }
+  45% { transform: scale(1.08) rotate(190deg); }
+  55% { transform: scale(1.08) rotate(170deg); }
+  100% { transform: scale(1) rotate(360deg); }
+}
+
+.pokeball-top-half {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+  border-bottom: 4px solid #1e293b;
+}
+
+.pokeball-bottom-half {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: white;
+}
+
+.pokeball-center-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1e293b;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokeball-center-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.82);
+  animation: lightPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes lightPulse {
+  0%, 100% { background-color: #ffffff; box-shadow: 0 0 4px rgba(255,255,255,0.8); }
+  50% { background-color: #fbcfe8; box-shadow: 0 0 8px rgba(236,72,153,0.9); }
+}
+
+/* Welcome Text Styles */
+.login-welcome-text h1 {
+  font-family: 'Orbitron', 'Space Grotesk', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #1d4ed8;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-welcome-text p {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 28px;
+  max-width: 380px;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Input Fields Group Styles */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.input-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #4f46e5;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-prefix-icon {
+  position: absolute;
+  left: 14px;
+  font-size: 1.1rem;
+}
+
+.trainer-name-input {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid #cbd5e1;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  outline: none;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.trainer-name-input::placeholder {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.trainer-name-input:focus {
+  border-color: #3b82f6;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+.login-error-toast {
+  font-size: 0.75rem;
+  color: #ef4444;
+  font-weight: 700;
+  margin-top: 6px;
+  align-self: flex-start;
+}
+
+/* Picker grid */
+.picker-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.partner-avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.partner-bubble-btn {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 10px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.partner-emoji {
+  font-size: 1.45rem;
+  transition: transform 0.2s;
+}
+
+.partner-badge-name {
+  font-size: 0.62rem;
+  font-weight: 755;
+  color: #64748b;
+  letter-spacing: -0.1px;
+}
+
+.partner-bubble-btn:hover {
+  background: var(--partner-color);
+  border-color: var(--partner-border);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+}
+
+.partner-bubble-btn:hover .partner-emoji {
+  transform: scale(1.15) rotate(4deg);
+}
+
+.partner-bubble-btn.selected {
+  background: var(--partner-color);
+  border-color: var(--partner-border);
+  border-width: 2.2px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.partner-bubble-btn.selected .partner-emoji {
+  transform: scale(1.25) translateY(-2px);
+}
+
+.partner-bubble-btn.selected .partner-badge-name {
+  color: #0f172a;
+  font-weight: 800;
+}
+
+/* Dynamic Summit Button CSS rules */
+.login-submit-action-btn {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 15px 24px;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb, #3b82f6);
+  border: none;
+  border-radius: 16px;
+  color: white;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(59, 130, 246, 0.35);
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-submit-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(59, 130, 246, 0.45);
+}
+
+.login-submit-action-btn:active {
+  transform: translateY(0);
+}
+
+.btn-shine-overlay {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  animation: shineLoop 3s infinite linear;
+}
+
+@keyframes shineLoop {
+  0% { left: -50%; }
+  35% { left: 150%; }
+  100% { left: 150%; }
+}
+
+.spinner-loader-action {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spinAction 0.6s linear infinite;
+}
+
+@keyframes spinAction {
+  to { transform: rotate(360deg); }
+}
+
+/* Decors in background layout */
+.login-background-deco {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.deco-dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.deco-dot.dot-1 {
+  top: 15%;
+  left: 10%;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #60a5fa 0%, transparent 70%);
+}
+
+.deco-dot.dot-2 {
+  bottom: 20%;
+  right: 12%;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, #c084fc 0%, transparent 70%);
+}
+
+.deco-dot.dot-3 {
+  bottom: 45%;
+  left: -50px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
+}
+
+/* Dark Mode Adaptation */
+body.dark .login-screen-overlay {
+  background-color: #0b0f19;
+  background-image: 
+    radial-gradient(circle at 10% 15%, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.4) 40%, transparent 75%),
+    radial-gradient(circle at 85% 45%, rgba(29, 78, 216, 0.15) 0%, rgba(15, 23, 42, 0.3) 35%, transparent 65%),
+    url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='rgba(255, 255, 255, 0.015)' stroke-width='2'/%3E%3Cline x1='5' y1='50' x2='95' y2='50' stroke='rgba(255, 255, 255, 0.015)' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%23090d16' stroke='rgba(255, 255, 255, 0.015)' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+body.dark .login-container-card {
+  background: rgba(15, 23, 42, 0.75) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+body.dark .login-welcome-text h1 {
+  background: linear-gradient(135deg, #60a5fa, #38bdf8, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.dark .login-welcome-text p {
+  color: #94a3b8 !important;
+}
+
+body.dark .trainer-name-input {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #f8fafc !important;
+}
+
+body.dark .trainer-name-input:focus {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2) !important;
+}
+
+body.dark .partner-bubble-btn {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark .partner-bubble-btn:hover {
+  background: var(--partner-color) !important;
+  border-color: var(--partner-border) !important;
+}
+
+body.dark .partner-bubble-btn.selected {
+  background: var(--partner-color) !important;
+  border-color: var(--partner-border) !important;
+}
+
+body.dark .partner-bubble-btn.selected .partner-badge-name {
+  color: #0f172a !important;
+}
+
+body.dark .login-submit-action-btn {
+  background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+  box-shadow: 0 10px 24px rgba(59, 130, 246, 0.2) !important;
+}
+
+body.dark .login-submit-action-btn:hover {
+  box-shadow: 0 14px 28px rgba(59, 130, 246, 0.3) !important;
+}
+
+body.dark .login-pokeball-rotator {
+  border-color: #0f172a !important;
+  background: #1e293b !important;
+}
+
+body.dark .pokeball-center-circle {
+  background: #0f172a !important;
+}
+
+body.dark .pokeball-top-half {
+  border-bottom-color: #0f172a !important;
+}
+
+body.dark .pokeball-bottom-half {
+  background: #1e293b !important;
+}

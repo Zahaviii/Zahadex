@@ -454,69 +454,230 @@ h1 {
   right: 20%;
 }
 
-/* ── Navbar Status Panel (Right Side Balance) ── */
-.navbar-status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* ── Trainer Dropdown Status Style ── */
+.trainer-status-container {
+  position: relative;
+  display: inline-block;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  z-index: 1000;
 }
 
-.status-pill {
+.trainer-badge-btn {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 6px 12px;
-  background: rgba(15, 23, 42, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(15, 23, 42, 0.25);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
   border-radius: 50px;
   color: white;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.72rem;
+  font-family: inherit;
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  user-select: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.05);
+  user-select: none;
 }
 
-.status-label {
-  opacity: 0.65;
-  font-size: 0.68rem;
+.trainer-badge-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
 }
 
-.status-value {
-  color: #93c5fd;
-  font-weight: 800;
+.trainer-badge-btn:active {
+  transform: translateY(0);
 }
 
-.favorites-status .status-value {
-  color: #f43f5e;
-}
-
-.status-indicator-dot {
-  width: 6px;
-  height: 6px;
+/* Pulse Animation for Radar */
+.radar-scanner-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
   border-radius: 50%;
 }
 
-.dot-pulse {
+.radar-pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: #22c55e;
-  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-  animation: pulse-dot 1.8s infinite;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: radar-sweep 1.8s infinite;
 }
 
-@keyframes pulse-dot {
+@keyframes radar-sweep {
   0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-  }
-  70% {
     transform: scale(1);
-    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+    opacity: 0.8;
+  }
+  15% {
+    opacity: 0.6;
   }
   100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    transform: scale(3.5);
+    opacity: 0;
   }
+}
+
+/* Dropdown Card Styling */
+.trainer-dropdown-card {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 290px;
+  background: #ffffff;
+  border: 1px solid rgba(191, 219, 254, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  z-index: 1000;
+  text-align: left;
+  animation: trainerDropdownIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes trainerDropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.trainer-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.trainer-avatar-glow {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.1);
+}
+
+.trainer-header-text h4 {
+  font-size: 0.95rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0;
+}
+
+.trainer-header-text .rank-name {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.trainer-dropdown-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mini-stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.mini-stat-item:hover {
+  background: #f1f5f9;
+}
+
+.mini-stat-item .stat-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.mini-stat-item .stat-value-text {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.trainer-dropdown-footer {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.trainer-dropdown-footer p {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  line-height: 1.35;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ── Dark Mode overrides ── */
+body.dark .trainer-dropdown-card {
+  background: #111827 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65) !important;
+}
+
+body.dark .trainer-dropdown-header {
+  border-bottom-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+body.dark .trainer-avatar-glow {
+  background: #1e293b !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+}
+
+body.dark .trainer-header-text h4 {
+  color: #ffffff !important;
+}
+
+body.dark .mini-stat-item {
+  background: #1e293b !important;
+  border-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+body.dark .mini-stat-item:hover {
+  background: rgba(30, 41, 59, 0.6) !important;
+}
+
+body.dark .mini-stat-item .stat-name {
+  color: #94a3b8 !important;
+}
+
+body.dark .mini-stat-item .stat-value-text {
+  color: #f1f5f9 !important;
+}
+
+body.dark .trainer-dropdown-footer {
+  border-top-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+body.dark .trainer-dropdown-footer p {
+  color: #64748b !important;
 }
 
 /* ── Navbar Mobile ── */
@@ -551,11 +712,15 @@ h1 {
     justify-content: center;
   }
 
-  .navbar-status {
+  .trainer-status-container {
     width: 100%;
+    display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px;
+  }
+  .trainer-dropdown-card {
+    right: 50% !important;
+    left: auto !important;
+    transform: translateX(50%) !important;
   }
 }
 
@@ -1142,107 +1307,129 @@ h1 {
 }
 
 /* ── Card Detail Logo (Top Left Corner) ── */
-.card-logo-detail {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  width: 28px;
-  height: 28px;
+/* ── Card Full Info Page deep stats Button ── */
+.card-full-info-btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(15, 23, 42, 0.04);
+  border: 1.5px solid rgba(15, 23, 42, 0.08);
+  border-radius: 14px;
+  color: #475569;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.45;
-  color: #94a3b8;
-  background: #ffffff;
-  border: 1.5px solid rgba(226, 232, 240, 0.8);
-  border-radius: 50%;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  z-index: 2;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 5;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
 }
 
-.card-logo-detail svg {
-  width: 13px;
-  height: 13px;
-  transition: transform 0.4s ease;
+.card-full-info-btn svg {
+  transition: transform 0.3s ease;
 }
 
-.card-logo-detail:hover {
-  opacity: 1 !important;
-  transform: scale(1.15);
-  border-color: currentColor;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background: #ffffff;
+.card-full-info-btn:hover {
+  transform: translateY(-2px);
+  color: #ffffff !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-.card-logo-detail:hover svg {
+.card-full-info-btn:hover svg {
   transform: rotate(180deg);
 }
 
-.card:hover .card-logo-detail {
-  opacity: 0.8;
+.card-full-info-btn:active {
+  transform: translateY(0);
 }
 
-/* ── Tooltip ── */
-.detail-tooltip {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, -4px) scale(0.9);
-  margin-top: 8px;
-  background: #0f172a;
-  color: #ffffff;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 4px 8px;
-  border-radius: 6px;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
-  font-family: inherit;
-  z-index: 99;
+/* Specific type colors for the detail button hover states */
+.card-fire .card-full-info-btn { color: #ea580c; border-color: rgba(249, 115, 22, 0.2); background: rgba(249, 115, 22, 0.06); }
+.card-fire .card-full-info-btn:hover { background: #f97316 !important; border-color: #f97316 !important; }
+
+.card-water .card-full-info-btn { color: #1d4ed8; border-color: rgba(59, 130, 246, 0.2); background: rgba(59, 130, 246, 0.06); }
+.card-water .card-full-info-btn:hover { background: #3b82f6 !important; border-color: #3b82f6 !important; }
+
+.card-grass .card-full-info-btn { color: #15803d; border-color: rgba(34, 197, 94, 0.2); background: rgba(34, 197, 94, 0.06); }
+.card-grass .card-full-info-btn:hover { background: #22c55e !important; border-color: #22c55e !important; }
+
+.card-electric .card-full-info-btn { color: #a16207; border-color: rgba(234, 179, 8, 0.3); background: rgba(234, 179, 8, 0.08); }
+.card-electric .card-full-info-btn:hover { background: #eab308 !important; border-color: #eab308 !important; color: #1e293b !important; }
+
+.card-psychic .card-full-info-btn { color: #be185d; border-color: rgba(236, 72, 153, 0.2); background: rgba(236, 72, 153, 0.06); }
+.card-psychic .card-full-info-btn:hover { background: #ec4899 !important; border-color: #ec4899 !important; }
+
+.card-ice .card-full-info-btn { color: #0891b2; border-color: rgba(6, 182, 212, 0.2); background: rgba(6, 182, 212, 0.06); }
+.card-ice .card-full-info-btn:hover { background: #06b6d4 !important; border-color: #06b6d4 !important; color: #1e293b !important; }
+
+.card-dragon .card-full-info-btn { color: #6d28d9; border-color: rgba(124, 58, 237, 0.2); background: rgba(124, 58, 237, 0.06); }
+.card-dragon .card-full-info-btn:hover { background: #7c3aed !important; border-color: #7c3aed !important; }
+
+.card-dark .card-full-info-btn { color: #1f2937; border-color: rgba(55, 65, 81, 0.2); background: rgba(55, 65, 81, 0.06); }
+.card-dark .card-full-info-btn:hover { background: #374151 !important; border-color: #374151 !important; }
+
+.card-fairy .card-full-info-btn { color: #be185d; border-color: rgba(244, 114, 182, 0.2); background: rgba(244, 114, 182, 0.06); }
+.card-fairy .card-full-info-btn:hover { background: #f472b6 !important; border-color: #f472b6 !important; color: #1e293b !important; }
+
+.card-normal .card-full-info-btn { color: #4b5563; border-color: rgba(156, 163, 175, 0.2); background: rgba(156, 163, 175, 0.06); }
+.card-normal .card-full-info-btn:hover { background: #9ca3af !important; border-color: #9ca3af !important; }
+
+.card-fighting .card-full-info-btn { color: #b91c1c; border-color: rgba(239, 68, 68, 0.2); background: rgba(239, 68, 68, 0.06); }
+.card-fighting .card-full-info-btn:hover { background: #ef4444 !important; border-color: #ef4444 !important; }
+
+.card-flying .card-full-info-btn { color: #4f46e5; border-color: rgba(129, 140, 248, 0.2); background: rgba(129, 140, 248, 0.06); }
+.card-flying .card-full-info-btn:hover { background: #818cf8 !important; border-color: #818cf8 !important; }
+
+.card-poison .card-full-info-btn { color: #7e22ce; border-color: rgba(168, 85, 247, 0.2); background: rgba(168, 85, 247, 0.06); }
+.card-poison .card-full-info-btn:hover { background: #a855f7 !important; border-color: #a855f7 !important; }
+
+.card-ground .card-full-info-btn { color: #b45309; border-color: rgba(245, 158, 11, 0.2); background: rgba(245, 158, 11, 0.06); }
+.card-ground .card-full-info-btn:hover { background: #f59e0b !important; border-color: #f59e0b !important; }
+
+.card-rock .card-full-info-btn { color: #44403c; border-color: rgba(120, 113, 108, 0.2); background: rgba(120, 113, 108, 0.06); }
+.card-rock .card-full-info-btn:hover { background: #78716c !important; border-color: #78716c !important; }
+
+.card-bug .card-full-info-btn { color: #4d7c0f; border-color: rgba(132, 204, 22, 0.2); background: rgba(132, 204, 22, 0.06); }
+.card-bug .card-full-info-btn:hover { background: #84cc16 !important; border-color: #84cc16 !important; color: #1e293b !important; }
+
+.card-ghost .card-full-info-btn { color: #4c1d95; border-color: rgba(109, 40, 217, 0.2); background: rgba(109, 40, 217, 0.06); }
+.card-ghost .card-full-info-btn:hover { background: #6d28d9 !important; border-color: #6d28d9 !important; }
+
+.card-steel .card-full-info-btn { color: #334155; border-color: rgba(148, 163, 184, 0.2); background: rgba(148, 163, 184, 0.06); }
+.card-steel .card-full-info-btn:hover { background: #94a3b8 !important; border-color: #94a3b8 !important; }
+
+
+/* Dark mode adaptations */
+body.dark .card-full-info-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
-.detail-tooltip::after {
-  content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 4px;
-  border-style: solid;
-  border-color: transparent transparent #0f172a transparent;
-}
-
-.card-logo-detail:hover .detail-tooltip {
-  opacity: 1;
-  transform: translate(-50%, 0) scale(1);
-}
-
-/* Specific type colors for the detail logo */
-.card-fire .card-logo-detail { color: #f97316; }
-.card-water .card-logo-detail { color: #3b82f6; }
-.card-grass .card-logo-detail { color: #22c55e; }
-.card-electric .card-logo-detail { color: #eab308; }
-.card-psychic .card-logo-detail { color: #ec4899; }
-.card-ice .card-logo-detail { color: #06b6d4; }
-.card-dragon .card-logo-detail { color: #7c3aed; }
-.card-dark .card-logo-detail { color: #374151; }
-.card-fairy .card-logo-detail { color: #f472b6; }
-.card-normal .card-logo-detail { color: #9ca3af; }
-.card-fighting .card-logo-detail { color: #ef4444; }
-.card-flying .card-logo-detail { color: #818cf8; }
-.card-poison .card-logo-detail { color: #a855f7; }
-.card-ground .card-logo-detail { color: #f59e0b; }
-.card-rock .card-logo-detail { color: #78716c; }
-.card-bug .card-logo-detail { color: #84cc16; }
-.card-ghost .card-logo-detail { color: #6d28d9; }
-.card-steel .card-logo-detail { color: #94a3b8; }
+body.dark .card-fire .card-full-info-btn { color: #f97316; }
+body.dark .card-water .card-full-info-btn { color: #60a5fa; }
+body.dark .card-grass .card-full-info-btn { color: #4ade80; }
+body.dark .card-electric .card-full-info-btn { color: #fef08a; }
+body.dark .card-psychic .card-full-info-btn { color: #f472b6; }
+body.dark .card-ice .card-full-info-btn { color: #22d3ee; }
+body.dark .card-dragon .card-full-info-btn { color: #a78bfa; }
+body.dark .card-dark .card-full-info-btn { color: #94a3b8; }
+body.dark .card-fairy .card-full-info-btn { color: #f472b6; }
+body.dark .card-normal .card-full-info-btn { color: #cbd5e1; }
+body.dark .card-fighting .card-full-info-btn { color: #f87171; }
+body.dark .card-flying .card-full-info-btn { color: #a5b4fc; }
+body.dark .card-poison .card-full-info-btn { color: #c084fc; }
+body.dark .card-ground .card-full-info-btn { color: #fbbf24; }
+body.dark .card-rock .card-full-info-btn { color: #a8a29e; }
+body.dark .card-bug .card-full-info-btn { color: #a3e635; }
+body.dark .card-ghost .card-full-info-btn { color: #c084fc; }
+body.dark .card-steel .card-full-info-btn { color: #cbd5e1; }
 
 /* ── Gacha Floating Action Button (FAB) ── */
 .gacha-fab-wrapper {
@@ -1743,3 +1930,911 @@ h1 {
   background: #ef4444;
   color: white;
 }
+
+/* ── Theme Toggler Styles ── */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle-btn:hover {
+  background: #ffffff;
+  color: #1d4ed8;
+  border-color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(0);
+}
+
+.theme-icon {
+  flex-shrink: 0;
+}
+
+/* ── Dark Mode Overrides ── */
+body.dark {
+  background-color: #0d131f;
+  background-image: 
+    radial-gradient(circle at 10% 15%, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.4) 40%, transparent 75%),
+    radial-gradient(circle at 85% 45%, rgba(29, 78, 216, 0.15) 0%, rgba(15, 23, 42, 0.3) 35%, transparent 65%),
+    radial-gradient(circle at 20% 80%, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.4) 45%, transparent 80%),
+    url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='rgba(255, 255, 255, 0.02)' stroke-width='2'/%3E%3Cline x1='5' y1='50' x2='95' y2='50' stroke='rgba(255, 255, 255, 0.02)' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%23090d16' stroke='rgba(255, 255, 255, 0.02)' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='6' fill='none' stroke='rgba(255, 255, 255, 0.02)' stroke-width='2'/%3E%3C/svg%3E");
+  color: #cbd5e1;
+}
+
+body.dark .navbar {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border: 1.5px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+body.dark .theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark .theme-toggle-btn:hover {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+body.dark .navbar-links .nav-item {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+body.dark .navbar-links .nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+body.dark .navbar-links .nav-item.active {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+}
+
+body.dark .card,
+body.dark .search-wrapper,
+body.dark .filter-select-wrapper,
+body.dark .gacha-simple-header,
+body.dark .gacha-spin-panel,
+body.dark .gacha-content-panel {
+  background: rgba(15, 23, 42, 0.65) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #e2e8f0 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35) !important;
+}
+
+body.dark .search {
+  color: #f1f5f9 !important;
+}
+
+body.dark .filter-select {
+  color: #cbd5e1 !important;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+}
+
+body.dark .card-name {
+  color: #f1f5f9 !important;
+}
+
+body.dark .card-id {
+  color: #94a3b8 !important;
+}
+
+body.dark .info-box {
+  background: rgba(30, 41, 59, 0.4);
+  border-color: rgba(51, 65, 85, 0.3);
+}
+
+body.dark .info-label {
+  color: #94a3b8;
+}
+
+body.dark .info-value {
+  color: #f8fafc;
+}
+
+body.dark .gacha-title-section h2 {
+  color: #38bdf8 !important;
+}
+
+body.dark .coin-box {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f59e0b;
+}
+
+body.dark .claim-btn {
+  background: linear-gradient(135deg, #059669, #047857);
+}
+
+body.dark .gacha-visual-box {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark .spin-action-btn.single {
+  background: #1e293b;
+}
+
+body.dark .spin-action-btn.single:hover:not(:disabled) {
+  background: #334155;
+}
+
+body.dark .rate-compact-item {
+  background: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+body.dark .rate-compact-item.legendary { background: rgba(245, 158, 11, 0.1); color: #f59e0b; border-color: rgba(245, 158, 11, 0.2); }
+body.dark .rate-compact-item.epic { background: rgba(168, 85, 247, 0.1); color: #c084fc; border-color: rgba(168, 85, 247, 0.2); }
+body.dark .rate-compact-item.rare { background: rgba(59, 130, 246, 0.1); color: #38bdf8; border-color: rgba(59, 130, 246, 0.2); }
+
+body.dark .notebook-inner-tabs {
+  background: #0f172a;
+}
+
+body.dark .notebook-tab-btn {
+  color: #64748b;
+}
+
+body.dark .notebook-tab-btn.active {
+  background: #38bdf8;
+  color: #0f172a;
+}
+
+body.dark .notebook-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark .notebook-card:hover {
+  background: rgba(30, 41, 59, 0.5);
+  border-color: #475569;
+}
+
+body.dark .notebook-count {
+  background: #334155;
+  color: #f1f5f9;
+}
+
+body.dark .release-btn {
+  background: rgba(244, 63, 94, 0.1);
+  color: #f43f5e;
+}
+
+body.dark .release-btn:hover {
+  background: #f43f5e;
+  color: white;
+}
+
+body.dark .fav-title {
+  color: #38bdf8;
+}
+
+body.dark .fav-btn {
+  background: #1e293b;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .load-more {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Typography Enhancements & Core Fixes for Dark Mode ── */
+body.dark .poke-name {
+  color: #f8fafc !important; /* Pristine off-white instead of muddy dark colors */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .poke-id {
+  color: #60a5fa !important; /* Highly visible light-blue instead of gray */
+  font-weight: 700;
+}
+
+body.dark .card {
+  background: rgba(15, 23, 42, 0.7) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45) !important;
+}
+
+body.dark .card::before {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent) !important;
+}
+
+body.dark .empty-state h3 {
+  color: #f1f5f9 !important;
+}
+
+body.dark .empty-state p {
+  color: #94a3b8 !important;
+}
+
+body.dark .filter-select {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+body.dark .filter-select option {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+/* Modal dark overrides */
+body.dark .modal-content {
+  background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7) !important;
+}
+
+body.dark .modal-body {
+  background: #090d16 !important;
+}
+
+body.dark .modal-name {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+body.dark .modal-id {
+  color: #38bdf8 !important;
+}
+
+body.dark .modal-stats {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark .modal-stats h3 {
+  color: #38bdf8 !important;
+}
+
+body.dark .stat-label {
+  color: #94a3b8 !important;
+}
+
+body.dark .stat-val {
+  color: #f1f5f9 !important;
+}
+
+body.dark .stat-bar-container {
+  background: #1e293b !important;
+}
+
+body.dark .info-box {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark .info-label {
+  color: #94a3b8 !important;
+}
+
+body.dark .info-value {
+  color: #ffffff !important;
+}
+
+body.dark .cry-btn {
+  background: #1e293b !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #38bdf8 !important;
+}
+
+body.dark .cry-btn:hover {
+  background: #38bdf8 !important;
+  color: #0f172a !important;
+}
+
+
+/* ── Pokémon of the Day (POTD) Styles ── */
+.potd-container {
+  background: linear-gradient(135deg, #ffffff, #f0f4ff);
+  border: 2px solid #bfdbfe;
+  border-radius: 24px;
+  padding: 30px;
+  margin-bottom: 35px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.08); /* Soft blue shadow */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.potd-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #f59e0b, #ef4444, #3b82f6);
+}
+
+.potd-label-pill {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+  z-index: 5;
+}
+
+.potd-star {
+  display: inline-block;
+  animation: spinSlow 4s linear infinite;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.potd-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 35px;
+  align-items: center;
+}
+
+.potd-image-col {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, rgba(239, 246, 255, 0.1) 0%, rgba(219, 234, 254, 0.05) 65%, transparent 100%) !important;
+  border-radius: 20px;
+  padding: 10px;
+  min-height: 240px;
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+/* 3D Stage & Podium under the floating Pokemon */
+.potd-3d-stage {
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+.potd-stage-floor {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.35) 0%, rgba(59, 130, 246, 0.6) 60%, rgba(30, 58, 138, 0.8) 100%);
+  border: 3.5px solid rgba(147, 197, 253, 0.9);
+  box-shadow: 
+    0 0 20px rgba(59, 130, 246, 0.6),
+    inset 0 0 15px rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: rotateX(75deg);
+}
+
+.potd-stage-ring-1 {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border: 2px dashed rgba(59, 130, 246, 0.4);
+  border-radius: 50%;
+  transform: rotateX(75deg) rotateZ(0deg);
+  animation: rotateStageRing 15s linear infinite;
+}
+
+.potd-stage-ring-2 {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border: 3px double rgba(147, 51, 234, 0.6);
+  border-radius: 50%;
+  transform: rotateX(75deg) rotateZ(0deg);
+  animation: rotateStageRingReverse 8s linear infinite;
+}
+
+.potd-stage-light-beam {
+  position: absolute;
+  bottom: 10px;
+  width: 90px;
+  height: 130px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(96, 165, 250, 0.15) 60%, rgba(59, 130, 246, 0.4) 100%);
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  filter: blur(5px);
+  transform: translateZ(-10px);
+  opacity: 0.85;
+  animation: pulseBeam 3s ease-in-out infinite;
+}
+
+@keyframes rotateStageRing {
+  from { transform: rotateX(75deg) rotateZ(0deg); }
+  to { transform: rotateX(75deg) rotateZ(360deg); }
+}
+
+@keyframes rotateStageRingReverse {
+  from { transform: rotateX(75deg) rotateZ(360deg); }
+  to { transform: rotateX(75deg) rotateZ(0deg); }
+}
+
+@keyframes pulseBeam {
+  0%, 100% { opacity: 0.6; transform: translateZ(-10px) scaleX(0.92); }
+  50% { opacity: 0.95; transform: translateZ(-10px) scaleX(1.08); }
+}
+
+/* 3D shadow projected beneath floating Pokemon on pedestal */
+.potd-sprite-shadow-3d {
+  position: absolute;
+  bottom: 25px;
+  width: 80px;
+  height: 20px;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 50%;
+  filter: blur(6px);
+  transform: rotateX(75deg) scale(1);
+  animation: shadowScale 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes shadowScale {
+  0%, 100% { transform: rotateX(75deg) scale(1); opacity: 0.45; filter: blur(5px); }
+  50% { transform: rotateX(75deg) scale(0.72); opacity: 0.22; filter: blur(7px); }
+}
+
+.potd-image-bg-glow {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background: rgba(59, 130, 246, 0.12);
+  border-radius: 50%;
+  filter: blur(25px);
+  z-index: 1;
+}
+
+.potd-sprite {
+  width: 175px;
+  height: 175px;
+  object-fit: contain;
+  position: relative;
+  z-index: 3;
+  transform: translateZ(50px) translateY(0);
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.15));
+  pointer-events: none;
+  animation: floatEffect3D 4s ease-in-out infinite;
+}
+
+@keyframes floatEffect3D {
+  0%, 100% { transform: translateZ(50px) translateY(5px); }
+  50% { transform: translateZ(50px) translateY(-15px); }
+}
+
+/* Type-specific stage highlights */
+/* Fire */
+.potd-type-fire .potd-stage-floor {
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.35) 0%, rgba(249, 115, 22, 0.6) 60%, rgba(120, 53, 4, 0.8) 100%);
+  border-color: rgba(253, 186, 116, 0.9);
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+.potd-type-fire .potd-stage-ring-1 { border-color: rgba(249, 115, 22, 0.3); }
+.potd-type-fire .potd-stage-ring-2 { border-color: rgba(239, 68, 68, 0.5); }
+.potd-type-fire .potd-stage-light-beam {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(251, 146, 60, 0.15) 60%, rgba(249, 115, 22, 0.4) 100%);
+}
+
+/* Water */
+.potd-type-water .potd-stage-floor {
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.35) 0%, rgba(59, 130, 246, 0.6) 60%, rgba(30, 58, 138, 0.8) 100%);
+  border-color: rgba(147, 197, 253, 0.9);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+.potd-type-water .potd-stage-ring-1 { border-color: rgba(59, 130, 246, 0.3); }
+.potd-type-water .potd-stage-ring-2 { border-color: rgba(29, 78, 216, 0.5); }
+.potd-type-water .potd-stage-light-beam {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(96, 165, 250, 0.15) 60%, rgba(59, 130, 246, 0.4) 100%);
+}
+
+/* Grass */
+.potd-type-grass .potd-stage-floor {
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.35) 0%, rgba(34, 197, 94, 0.6) 60%, rgba(20, 83, 45, 0.8) 100%);
+  border-color: rgba(134, 239, 172, 0.9);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+.potd-type-grass .potd-stage-ring-1 { border-color: rgba(34, 197, 94, 0.3); }
+.potd-type-grass .potd-stage-ring-2 { border-color: rgba(21, 128, 61, 0.5); }
+.potd-type-grass .potd-stage-light-beam {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(74, 222, 128, 0.15) 60%, rgba(34, 197, 94, 0.4) 100%);
+}
+
+/* Electric */
+.potd-type-electric .potd-stage-floor {
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.35) 0%, rgba(234, 179, 8, 0.6) 60%, rgba(113, 63, 18, 0.8) 100%);
+  border-color: rgba(253, 224, 71, 0.9);
+  box-shadow: 0 0 20px rgba(234, 179, 8, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+.potd-type-electric .potd-stage-ring-1 { border-color: rgba(234, 179, 8, 0.3); }
+.potd-type-electric .potd-stage-ring-2 { border-color: rgba(202, 138, 4, 0.5); }
+.potd-type-electric .potd-stage-light-beam {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(250, 204, 21, 0.15) 60%, rgba(234, 179, 8, 0.4) 100%);
+}
+
+/* Psychic */
+.potd-type-psychic .potd-stage-floor {
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.35) 0%, rgba(236, 72, 153, 0.6) 60%, rgba(131, 24, 67, 0.8) 100%);
+  border-color: rgba(249, 168, 212, 0.9);
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+.potd-type-psychic .potd-stage-ring-1 { border-color: rgba(236, 72, 153, 0.3); }
+.potd-type-psychic .potd-stage-ring-2 { border-color: rgba(190, 24, 93, 0.5); }
+.potd-type-psychic .potd-stage-light-beam {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(244, 114, 182, 0.15) 60%, rgba(236, 72, 153, 0.4) 100%);
+}
+
+/* Ghost */
+.potd-type-ghost .potd-stage-floor {
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.35) 0%, rgba(109, 40, 217, 0.6) 60%, rgba(59, 7, 100, 0.8) 100%);
+  border-color: rgba(196, 181, 253, 0.9);
+  box-shadow: 0 0 20px rgba(109, 40, 217, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+.potd-type-ghost .potd-stage-ring-1 { border-color: rgba(109, 40, 217, 0.3); }
+.potd-type-ghost .potd-stage-ring-2 { border-color: rgba(76, 29, 149, 0.5); }
+.potd-type-ghost .potd-stage-light-beam {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(167, 139, 250, 0.15) 60%, rgba(109, 40, 217, 0.4) 100%);
+}
+
+.potd-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.potd-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.potd-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #2563eb;
+  letter-spacing: 0.5px;
+}
+
+.potd-title-name {
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: #1e3a8a;
+  text-transform: capitalize;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.potd-tags-row {
+  display: flex;
+  gap: 8px;
+}
+
+.type-badge-potd {
+  padding: 5px 16px !important;
+  font-size: 0.8rem !important;
+  border-radius: 8px !important;
+  font-weight: 800 !important;
+}
+
+.potd-description-quote {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 4px 0 10px 0;
+  background: rgba(239, 246, 255, 0.4);
+  padding: 14px 18px;
+  border-left: 4px solid #3b82f6;
+  border-radius: 0 12px 12px 0;
+}
+
+.potd-quick-metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.potd-metric-box {
+  background: white;
+  border: 1.2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.potd-metric-box:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.metric-num {
+  font-size: 1rem;
+  font-weight: 850;
+  color: #1e293b;
+  line-height: 1;
+}
+
+.metric-num.animate-pulse {
+  color: #f59e0b;
+}
+
+.metric-lbl {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  line-height: 1;
+}
+
+.potd-actions-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.potd-btn-main {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 18px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.potd-btn-main.primary-action {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.potd-btn-main.primary-action:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
+
+.potd-btn-main.text-action {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1.5px solid #cbd5e1;
+}
+
+.potd-btn-main.text-action:hover {
+  background: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+.potd-btn-main.fav-action-potd {
+  background: #fef2f2;
+  color: #e11d48;
+  border: 1.5px solid #fecdd3;
+}
+
+.potd-btn-main.fav-action-potd:hover {
+  background: #ffe4e6;
+  transform: translateY(-2px);
+}
+
+.potd-btn-main.fav-action-potd.liked {
+  background: #e11d48;
+  color: white;
+  border-color: #e11d48;
+}
+
+/* ── Pokémon of the Day Dark Mode ── */
+body.dark .potd-container {
+  background: linear-gradient(135deg, #111827, #1f2937) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65) !important;
+}
+
+body.dark .potd-container::before {
+  background: linear-gradient(90deg, #38bdf8, #a855f7, #60a5fa) !important;
+}
+
+body.dark .potd-title-name {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .potd-number {
+  color: #38bdf8 !important;
+  font-weight: 800;
+}
+
+body.dark .potd-description-quote {
+  background: rgba(15, 23, 42, 0.65) !important;
+  color: #e2e8f0 !important;
+  border-left-width: 4px;
+}
+
+body.dark .potd-metric-box {
+  background: #0f172a !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark .metric-num {
+  color: #ffffff !important;
+}
+
+body.dark .metric-lbl {
+  color: #94a3b8 !important;
+  font-weight: 700;
+}
+
+body.dark .potd-btn-main.primary-action {
+  box-shadow: 0 6px 18px rgba(14, 165, 233, 0.25) !important;
+}
+
+body.dark .potd-btn-main.text-action {
+  background: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark .potd-btn-main.text-action:hover {
+  background: #334155 !important;
+}
+
+body.dark .potd-btn-main.fav-action-potd {
+  background: rgba(225, 29, 72, 0.1) !important;
+  color: #fda4af !important;
+  border-color: rgba(225, 29, 72, 0.2) !important;
+}
+
+body.dark .potd-btn-main.fav-action-potd:hover {
+  background: rgba(225, 29, 72, 0.2) !important;
+}
+
+body.dark .potd-btn-main.fav-action-potd.liked {
+  background: #e11d48 !important;
+  color: white !important;
+  border-color: #e11d48 !important;
+}
+
+/* ── Element-specific Premium Thriving Aura Styles for Pokemon of the Day (POTD) ── */
+
+/* Type-specific container accents (Light Mode) */
+.potd-container.potd-type-fire { background: linear-gradient(135deg, #fffbf7, #fff2eb); border-color: rgba(249, 115, 22, 0.35); }
+.potd-container.potd-type-fire::before { background: linear-gradient(90deg, #f97316, #ea580c); }
+.potd-container.potd-type-fire .potd-number { color: #f97316; }
+.potd-container.potd-type-fire .potd-title-name { color: #c2410c; }
+.potd-container.potd-type-fire .potd-description-quote { border-left-color: #f97316; background: rgba(254, 243, 199, 0.25); }
+
+.potd-container.potd-type-water { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-color: rgba(59, 130, 246, 0.35); }
+.potd-container.potd-type-water::before { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+.potd-container.potd-type-water .potd-number { color: #2563eb; }
+.potd-container.potd-type-water .potd-title-name { color: #1e3a8a; }
+.potd-container.potd-type-water .potd-description-quote { border-left-color: #3b82f6; background: rgba(219, 234, 254, 0.25); }
+
+.potd-container.potd-type-grass { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: rgba(34, 197, 94, 0.35); }
+.potd-container.potd-type-grass::before { background: linear-gradient(90deg, #22c55e, #15803d); }
+.potd-container.potd-type-grass .potd-number { color: #166534; }
+.potd-container.potd-type-grass .potd-title-name { color: #14532d; }
+.potd-container.potd-type-grass .potd-description-quote { border-left-color: #22c55e; background: rgba(220, 252, 231, 0.25); }
+
+.potd-container.potd-type-electric { background: linear-gradient(135deg, #fefdf0, #fef9c3); border-color: rgba(234, 179, 8, 0.35); }
+.potd-container.potd-type-electric::before { background: linear-gradient(90deg, #eab308, #ca8a04); }
+.potd-container.potd-type-electric .potd-number { color: #ca8a04; }
+.potd-container.potd-type-electric .potd-title-name { color: #713f12; }
+.potd-container.potd-type-electric .potd-description-quote { border-left-color: #eab308; background: rgba(254, 249, 195, 0.25); }
+
+.potd-container.potd-type-psychic { background: linear-gradient(135deg, #fdf2f8, #fbcfe8); border-color: rgba(236, 72, 153, 0.35); }
+.potd-container.potd-type-psychic::before { background: linear-gradient(90deg, #ec4899, #be185d); }
+.potd-container.potd-type-psychic .potd-number { color: #be185d; }
+.potd-container.potd-type-psychic .potd-title-name { color: #831843; }
+.potd-container.potd-type-psychic .potd-description-quote { border-left-color: #ec4899; background: rgba(253, 242, 248, 0.35); }
+
+.potd-container.potd-type-ghost { background: linear-gradient(135deg, #faf5ff, #ede9fe); border-color: rgba(109, 40, 217, 0.35); }
+.potd-container.potd-type-ghost::before { background: linear-gradient(90deg, #6d28d9, #4c1d95); }
+.potd-container.potd-type-ghost .potd-number { color: #6d28d9; }
+.potd-container.potd-type-ghost .potd-title-name { color: #3b0764; }
+.potd-container.potd-type-ghost .potd-description-quote { border-left-color: #6d28d9; background: rgba(243, 232, 255, 0.25); }
+
+/* Image Column Glows (Light Mode) */
+.potd-image-col.potd-image-fire { background: radial-gradient(circle, rgba(249, 115, 22, 0.18) 0%, rgba(249, 115, 22, 0.05) 60%, transparent 100%) !important; }
+.potd-image-col.potd-image-fire .potd-image-bg-glow { background: rgba(249, 115, 22, 0.15) !important; }
+
+.potd-image-col.potd-image-water { background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(59, 130, 246, 0.05) 60%, transparent 100%) !important; }
+.potd-image-col.potd-image-water .potd-image-bg-glow { background: rgba(59, 130, 246, 0.15) !important; }
+
+.potd-image-col.potd-image-grass { background: radial-gradient(circle, rgba(34, 197, 94, 0.18) 0%, rgba(34, 197, 94, 0.05) 60%, transparent 100%) !important; }
+.potd-image-col.potd-image-grass .potd-image-bg-glow { background: rgba(34, 197, 94, 0.15) !important; }
+
+.potd-image-col.potd-image-electric { background: radial-gradient(circle, rgba(234, 179, 8, 0.18) 0%, rgba(234, 179, 8, 0.05) 60%, transparent 100%) !important; }
+.potd-image-col.potd-image-electric .potd-image-bg-glow { background: rgba(234, 179, 8, 0.15) !important; }
+
+
+/* Type-specific container styles (Dark Mode Theme) */
+body.dark .potd-container.potd-type-fire { background: linear-gradient(135deg, #180903, #220f06) !important; border-color: rgba(249, 115, 22, 0.45) !important; }
+body.dark .potd-container.potd-type-fire::before { background: linear-gradient(90deg, #f97316, #ea580c) !important; }
+
+body.dark .potd-container.potd-type-water { background: linear-gradient(135deg, #041021, #081a34) !important; border-color: rgba(59, 130, 246, 0.45) !important; }
+body.dark .potd-container.potd-type-water::before { background: linear-gradient(90deg, #3b82f6, #1d4ed8) !important; }
+
+body.dark .potd-container.potd-type-grass { background: linear-gradient(135deg, #031308, #051d0d) !important; border-color: rgba(34, 197, 94, 0.45) !important; }
+body.dark .potd-container.potd-type-grass::before { background: linear-gradient(90deg, #22c55e, #15803d) !important; }
+
+body.dark .potd-container.potd-type-electric { background: linear-gradient(135deg, #181502, #242004) !important; border-color: rgba(234, 179, 8, 0.45) !important; }
+body.dark .potd-container.potd-type-electric::before { background: linear-gradient(90deg, #eab308, #ca8a04) !important; }
+
+body.dark .potd-container.potd-type-psychic { background: linear-gradient(135deg, #18030f, #220516) !important; border-color: rgba(236, 72, 153, 0.45) !important; }
+body.dark .potd-container.potd-type-psychic::before { background: linear-gradient(90deg, #ec4899, #be185d) !important; }
+
+body.dark .potd-container.potd-type-ghost { background: linear-gradient(135deg, #0a0118, #13032d) !important; border-color: rgba(109, 40, 217, 0.45) !important; }
+body.dark .potd-container.potd-type-ghost::before { background: linear-gradient(90deg, #6d28d9, #4c1d95) !important; }
+
+/* Image Column Glows (Dark Mode) */
+body.dark .potd-image-col.potd-image-fire { background: radial-gradient(circle, rgba(249, 115, 22, 0.3) 0%, rgba(249, 115, 22, 0.05) 70%, transparent 100%) !important; }
+body.dark .potd-image-col.potd-image-fire .potd-image-bg-glow { background: rgba(249, 115, 22, 0.35) !important; }
+
+body.dark .potd-image-col.potd-image-water { background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0.05) 70%, transparent 100%) !important; }
+body.dark .potd-image-col.potd-image-water .potd-image-bg-glow { background: rgba(59, 130, 246, 0.35) !important; }
+
+body.dark .potd-image-col.potd-image-grass { background: radial-gradient(circle, rgba(34, 197, 94, 0.3) 0%, rgba(34, 197, 94, 0.05) 70%, transparent 100%) !important; }
+body.dark .potd-image-col.potd-image-grass .potd-image-bg-glow { background: rgba(34, 197, 94, 0.35) !important; }
+
+body.dark .potd-image-col.potd-image-electric { background: radial-gradient(circle, rgba(234, 179, 8, 0.3) 0%, rgba(234, 179, 8, 0.05) 70%, transparent 100%) !important; }
+body.dark .potd-image-col.potd-image-electric .potd-image-bg-glow { background: rgba(234, 179, 8, 0.35) !important; }
+
+
+@media (max-width: 768px) {
+  .potd-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .potd-container {
+    padding: 20px;
+  }
+}
+
+

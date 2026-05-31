@@ -256,38 +256,49 @@ h1 {
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
   }
 
   .card img {
-    width: 130px;
-    height: 130px;
+    width: 140px;
+    height: 140px;
   }
 }
 
 @media (max-width: 768px) {
   .app {
-    padding: 20px 12px;
+    padding: 16px 12px;
   }
 
   .grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
   .card {
-    padding: 12px 6px;
-    border-radius: 16px;
+    padding: 16px 10px 14px;
+    border-radius: 20px;
   }
 
   .card img {
-    width: 90px;
-    height: 90px;
+    width: 110px;
+    height: 110px;
+  }
+
+  .poke-id {
+    font-size: 0.75rem;
+    margin-top: 6px;
   }
 
   .poke-name {
-    font-size: 0.8rem;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  .type {
+    font-size: 0.68rem;
+    padding: 3px 10px;
   }
 
   .search {
@@ -296,19 +307,33 @@ h1 {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .card {
+    padding: 12px 6px 10px;
+    border-radius: 16px;
   }
 
   .card img {
-    width: 70px;
-    height: 70px;
+    width: 85px;
+    height: 85px;
+  }
+
+  .poke-id {
+    font-size: 0.70rem;
+    margin-top: 4px;
+  }
+
+  .poke-name {
+    font-size: 0.88rem;
   }
 
   .type {
-    font-size: 0.6rem;
+    font-size: 0.62rem;
     padding: 2px 6px;
   }
 }
@@ -683,33 +708,36 @@ body.dark .trainer-dropdown-footer p {
 /* ── Navbar Mobile ── */
 @media (max-width: 768px) {
   .navbar {
-    padding: 16px;
+    padding: 14px;
     border-radius: 16px;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
   }
 
   .navbar-logo {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
   }
 
   .navbar-right {
     flex-direction: column;
     width: 100%;
-    gap: 12px;
+    gap: 10px;
   }
 
   .navbar-links {
-    gap: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
     width: 100%;
     justify-content: center;
   }
 
   .navbar-links .nav-item {
-    font-size: 0.85rem;
-    padding: 8px 16px;
-    flex: 1;
+    font-size: 0.8rem;
+    padding: 10px 12px;
+    flex: 1 1 calc(50% - 4px);
     justify-content: center;
+    box-sizing: border-box;
   }
 
   .trainer-status-container {
@@ -717,6 +745,7 @@ body.dark .trainer-dropdown-footer p {
     display: flex;
     justify-content: center;
   }
+  
   .trainer-dropdown-card {
     right: 50% !important;
     left: auto !important;
@@ -1857,6 +1886,15 @@ body.dark .card-steel .card-full-info-btn { color: #cbd5e1; }
   background: #f1f5f9;
   padding: 4px;
   border-radius: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  max-width: 100%;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar Edge/IE */
+}
+
+.notebook-inner-tabs::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
 }
 
 .notebook-tab-btn {
